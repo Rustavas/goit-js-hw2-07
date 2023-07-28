@@ -20,10 +20,12 @@ const listItems = galleryItems.map(({preview, original, description}) => {
 gallery.insertAdjacentHTML('beforeend', listItems)
 
 gallery.addEventListener('click', onOpenModal)
+window.addEventListener('keydown', onEscKeyPress);
 
 function onOpenModal(event) {
   event.preventDefault();
   // console.dir(event.target.nodeName)
+  
   const currentItem = event.target
   if(currentItem.nodeName !== 'IMG'){
     return;
@@ -32,10 +34,18 @@ function onOpenModal(event) {
        <img width="1400" height="900" src="${currentItem.dataset.source}">
      `);
     instance.show()
+    console.log(instance)
+    // return instance;
   };
 };
 
+// console.log(instance)
 
+// function onEscKeyPress(event) {
+//   if(event.code === 'Escape') {
+//     instance.hide()
+//   }
+// }
 
 
 
